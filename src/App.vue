@@ -1,10 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/hello">hello</router-link>
-    </div>
+    <img v-show="show" src="@/assets/logo.png" alt="">
     <router-view />
   </div>
 </template>
@@ -31,3 +27,23 @@
   color: #42b983;
 }
 </style>
+<script>
+export default {
+  name: 'App',
+  data () {
+    return {
+      show: true
+    }
+
+  },
+  watch: {
+    $route (to, from) {
+      if (to.path == "/") {
+        this.show = true;
+      } else {
+        this.show = false;
+      }
+    }
+  }
+}
+</script>
